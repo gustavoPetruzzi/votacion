@@ -6,8 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login'
-import { SplashPage } from '../pages/splash/splash'
+import { LoginPage } from '../pages/login/login';
+import { SplashPage } from '../pages/splash/splash';
+import { ModalPage } from '../pages/modal/modal';
 
 //AF
 
@@ -28,7 +29,8 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     LoginPage,
-    SplashPage
+    SplashPage,
+    ModalPage
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ export const firebaseConfig = {
     HomePage,
     LoginPage,
     SplashPage,
+    ModalPage
     
   ],
   providers: [

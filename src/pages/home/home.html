@@ -1,21 +1,41 @@
 <ion-content>
     <ion-row class="fila">
-      <ion-col class="vot1" col-6 text-center (click)="votar(votacion.opciones[0])" >
-        <ion-row>
+
+      <ion-col class="vot1" col-6 text-center>
+        <ion-row (click)="votar(votacion.opciones[0])" >
           <ion-col class="imagen">
             <h1> {{votacion.opciones[0].titulo}} </h1>
             <img src="{{votacion.opciones[0].imagen}}" class="imagen" alt="">
-            <h2 padding> {{votacion.opciones[0].pregunta}} </h2>
           </ion-col>
         </ion-row>
-        
+        <ion-footer style="background-color:blue;" no-border >
+          <ion-toolbar transparent>
+            <ion-title><h1> {{votacion.opciones[0].pregunta}}</h1> </ion-title>            
+            <button ion-button large full rounded (click)="resultados()" *ngIf="usuario.perfil == 'admin' && !votacion.cerrada " >Resultados Parciales</button>                
+            <button ion-button large full rounded (click)="resultados()" *ngIf="votacion.cerrada " >Resultados Finales</button> 
+          </ion-toolbar>
+        </ion-footer>
       </ion-col>
-      <ion-col col-6 class="vot2" text-center (click)="votar(votacion.opciones[1])">
-        <h1> {{votacion.opciones[1].titulo}} </h1>
-        <img src="{{ votacion.opciones[1].imagen }}" class="imagen"  alt="">
-        <h2> {{votacion.opciones[1].pregunta}} </h2>
-      </ion-col>
-      
+
+        <ion-fab center middle>
+          <button ion-fab color="danger" (click)="cerrar()" [hidden]="usuario.perfil != 'admin'" ><ion-icon name="close"></ion-icon></button>
+        </ion-fab>
+
+        <ion-col col-6 class="vot2" text-center>
+          <ion-row (click)="votar(votacion.opciones[1])" >
+            <ion-col class="imagen">
+              <h1> {{votacion.opciones[1].titulo}} </h1>
+              <img src="{{ votacion.opciones[1].imagen }}" class="imagen"  alt="">
+            </ion-col>
+          </ion-row>
+          <ion-footer style="background-color:green;" no-border >
+          <ion-toolbar transparent >
+            <ion-title  > <h1>{{votacion.opciones[1].pregunta}}</h1></ion-title>
+              <button ion-button large full rounded (click)="resultados()" *ngIf="usuario.perfil == 'admin' && !votacion.cerrada" >Resultados Parciales</button>                
+              <button ion-button large full rounded (click)="resultados()" *ngIf="votacion.cerrada " >Resultados Finales</button>
+            </ion-toolbar>
+          </ion-footer>
+        </ion-col>
     </ion-row>
 </ion-content>
 

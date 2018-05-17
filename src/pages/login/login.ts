@@ -69,37 +69,41 @@ export class LoginPage {
 
 
   ingresar(usuario:string){
-    
-    switch (usuario) {
-      case 'admin':
-        this.nombre = 'admin@gmail.com';
-        this.pass = '11';
-        this.login(usuario);
-        break;
-      case 'invitado':
-        this.nombre = 'invitado@gmail.com';
-        this.pass = '22';
-        this.login(usuario);
-        break;
-      case 'usuario':
-        this.nombre = 'usuario@gmail.com';
-        this.pass = '33';
-        this.login(usuario);
-        break;
-      case 'anonimo':
-        this.nombre = 'anonimo@gmail.com';
-        this.pass = '44';
-        this.login(usuario);
-        break;
-      case 'tester':
-        this.nombre = 'tester@gmail.com';
-        this.pass = '55';
-        this.login(usuario);
-        break;
-    
-      default:
-        this.login()
-        break;
+    if(usuario){
+      switch (usuario) {
+        case 'admin':
+          this.nombre = 'admin@gmail.com';
+          this.pass = '11';
+          this.login(usuario);
+          break;
+        case 'invitado':
+          this.nombre = 'invitado@gmail.com';
+          this.pass = '22';
+          this.login(usuario);
+          break;
+        case 'usuario':
+          this.nombre = 'usuario@gmail.com';
+          this.pass = '33';
+          this.login(usuario);
+          break;
+        case 'anonimo':
+          this.nombre = 'anonimo@gmail.com';
+          this.pass = '44';
+          this.login(usuario);
+          break;
+        case 'tester':
+          this.nombre = 'tester@gmail.com';
+          this.pass = '55';
+          this.login(usuario);
+          break;
+      
+        default:
+          this.login(this.nombre);
+          break;
+      }
+    }
+    else{
+      this.login(this.nombre);
     }
   }
 
@@ -264,7 +268,7 @@ export class LoginPage {
                       this.usuario = element;
                       console.log(element);
                       console.log(this.usuario);
-                      this.navCtrl.setRoot(HomePage, {usuario: this.nombre})
+                      this.navCtrl.setRoot(HomePage, {usuario: this.nombre, votacion: this.votacion})
                       esperador.dismiss();
                     }
                   });
@@ -396,6 +400,9 @@ export class LoginPage {
                       setTimeout(function() {
                       loadingError.dismiss();
                     }, 3000);
+                  }
+                  else{
+                    console.log(errorCode); 
                   }
                 });
         break;

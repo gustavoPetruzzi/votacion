@@ -4,4 +4,7 @@ export class Usuario{
     perfil:string;
     sexo:string;
     id:string;
+    constructor(){
+        this.perfil = "NN";
+    }
 }
